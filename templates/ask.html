@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Question - StudyMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 StudyMate</h1>
+            <p class="subtitle">Documents Processed Successfully</p>
+        </header>
+
+        <main>
+            <div class="question-section">
+                <h2>Ask Your Question</h2>
+                <form action="/answer" method="POST">
+                    <textarea 
+                        name="question" 
+                        id="question" 
+                        rows="4" 
+                        placeholder="Enter your question about the documents..."
+                        required
+                        autofocus></textarea>
+                    
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">Get Answer</button>
+                        <a href="/generate_quiz" class="btn-secondary">Generate Quiz (5 Questions)</a>
+                        <a href="/reset" class="btn-secondary">Upload New Documents</a>
+                        <a href="/history" class="btn-secondary">View Question History</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tips-section">
+                <h3>💡 Tips for Better Results</h3>
+                <ul>
+                    <li>Ask specific, focused questions</li>
+                    <li>Use terminology from your documents</li>
+                    <li>Questions about definitions work best</li>
+                    <li>Avoid questions requiring external knowledge</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Granite AI • Built with Flask</p>
+        </footer>
+    </div>
+</body>
+</html>

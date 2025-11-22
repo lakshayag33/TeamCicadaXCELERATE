@@ -1,0 +1,16 @@
+Flask==3.0.0
+PyMuPDF==1.26.6
+sentence-transformers==5.1.2
+faiss-cpu==1.9.0post1
+transformers==4.57.1
+torch==2.6.0
+torchvision==0.21.0
+accelerate==1.11.0
+Werkzeug==3.0.1
+numpy==1.26.4
+huggingface-hub==0.36.0
+tokenizers==0.22.1
+protobuf==4.24.0
+sentencepiece==0.2.1
+docx2pdf==0.1.8
+reportlab==4.1.0

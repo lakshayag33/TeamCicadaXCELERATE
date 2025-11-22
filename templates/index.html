@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyMate - AI Document Q&A</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo-wrap"><div class="logo-mark">SM</div></div>
+      <h1>StudyMate</h1>
+      <p class="subtitle">Your Live Study Companion</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <h2>Upload Your File</h2>
+        <p class="meta">Upload and process your notes to start live, interactive studying.</p>
+
+        <form action="/process" method="POST" enctype="multipart/form-data" class="upload-form">
+          <div class="btn-row">
+            <label for="pdfs" class="btn upload-btn">
+              <span class="icon">
+                <!-- Book Icon -->
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v15H6.5A2.5 2.5 0 0 0 4 19.5V4.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              Upload File
+            </label>
+            <input type="file" id="pdfs" name="pdfs" accept=".pdf,.docx,.pptx,.txt" multiple required onchange="displayFileNames()">
+
+            <button type="submit" class="btn process-btn">
+              <span class="icon">
+                <!-- Brain Icon -->
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3m6-18a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3M9 3h6m-6 18h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M9 8h.01M9 12h.01M9 16h.01M15 8h.01M15 12h.01M15 16h.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              Process File
+            </button>
+          </div>
+
+          <div id="file-list" class="file-list"></div>
+        </form>
+
+        <div class="instructions">
+          <strong>How It Works</strong>
+          <ol>
+            <li>Upload your notes, books, or lecture materials.</li>
+            <li>The system organizes and reads your materials in real time.</li>
+            <li>Ask questions while you study live with smart assistance.</li>
+            <li>Get instant answers and visual highlights.</li>
+          </ol>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Powered by Granite AI • Built with Flask</p>
+    </footer>
+  </div>
+
+  <script>
+    function displayFileNames() {
+      const input = document.getElementById('pdfs');
+      const fileList = document.getElementById('file-list');
+      fileList.innerHTML = '';
+      if (input.files.length > 0) {
+        const ul = document.createElement('ul');
+        for (let i = 0; i < input.files.length; i++) {
+          const li = document.createElement('li');
+          li.textContent = input.files[i].name;
+          ul.appendChild(li);
+        }
+        fileList.appendChild(ul);
+      }
+    }
+  </script>
+</body>
+</html>

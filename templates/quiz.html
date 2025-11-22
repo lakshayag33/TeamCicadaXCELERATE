@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - StudyMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📘 StudyMate Quiz</h1>
+            <p class="subtitle">Test your understanding from the uploaded documents</p>
+        </header>
+
+        <main>
+            {% if questions %}
+            <div class="quiz-section">
+                <h2>Generated Quiz</h2>
+                <ol class="quiz-list">
+                    {% for q in questions %}
+                    <li>{{ q }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+            <div class="button-group">
+                <a href="/download_quiz" class="btn-primary">Download Quiz as PDF</a>
+                <a href="/ask" class="btn-secondary">Back to Questions</a>
+            </div>
+            {% else %}
+            <div class="status-box">
+                <p>No quiz available. Please generate a quiz from the ask page.</p>
+            </div>
+            <div class="button-group">
+                <a href="/ask" class="btn-primary">Generate Quiz</a>
+            </div>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>Powered by Granite AI • Built with Flask</p>
+        </footer>
+    </div>
+</body>
+</html>

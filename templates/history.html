@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question History - StudyMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🕘 Question History</h1>
+            <p class="subtitle">Previously Asked Questions and Answers</p>
+        </header>
+
+        <main>
+            {% if records %}
+                {% for record in records %}
+                    <div class="question-display">
+                        <h3>Question:</h3>
+                        <p>{{ record.question }}</p>
+                    </div>
+
+                    <div class="answer-box">
+                        <h3>Answer:</h3>
+                        <p>{{ record.answer }}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <div class="status-box">
+                    <p>No questions asked yet. Start by uploading PDFs and asking questions!</p>
+                </div>
+            {% endif %}
+
+            <div class="button-group">
+                <a href="/ask" class="btn-primary">Ask a New Question</a>
+                <a href="/" class="btn-secondary">Upload New PDFs</a>
+                <!-- ✅ New Download Button -->
+                <a href="/download_history" class="btn-secondary">⬇️ Download History as PDF</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Granite AI • Built with Flask</p>
+        </footer>
+    </div>
+</body>
+</html>

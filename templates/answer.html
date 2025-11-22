@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer - StudyMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 StudyMate</h1>
+            <p class="subtitle">Your Answer is Ready</p>
+        </header>
+
+        <main>
+            <div class="question-display">
+                <h3>Question:</h3>
+                <p>{{ question }}</p>
+            </div>
+
+            <div class="answer-box">
+                <h3>Answer:</h3>
+                <p>{{ answer }}</p>
+            </div>
+
+            {% if sources %}
+            <div class="sources-section">
+                <h3>📖 Source Excerpts:</h3>
+                {% for source in sources %}
+                <div class="source-card">
+                    <p class="source-text">{{ source.text }}</p>
+                    <p class="source-score">Relevance: {{ source.score }}</p>
+                    <p class="source-meta">{{ source.meta }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="button-group">
+                <a href="/new_question" class="btn-primary">Ask Another Question</a>
+                <a href="/reset" class="btn-secondary">Upload New PDFs</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Granite AI • Built with Flask</p>
+        </footer>
+    </div>
+</body>
+</html>
